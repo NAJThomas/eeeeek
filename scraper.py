@@ -7,7 +7,7 @@ import lxml.html #this is a good tool for digging into a web page. In weird codi
 # # Read in a page
 html = scraperwiki.scrape("http://uk.soccerway.com/teams/netherlands/fortuna-sittard/") #Here you are telling the computer to use scraperwiki 
 #to scrape a page. The fact that the page is between functions shows it is a function. 
-print html #you then have to tell the computer to print the results of that command
+#print html #you then have to tell the computer to print the results of that command
 #
 # # Find something on the page using css selectors
 root = lxml.html.fromstring(html) #with root you are creating an object which you can then use to operate. You just just leave this line.
