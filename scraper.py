@@ -1,6 +1,3 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
-
 import scraperwiki #this is a useful tool to help import web pages
 import lxml.html #this is a good tool for digging into a web page. In weird coding language both of these things are called 'libraries'.
 #
@@ -13,7 +10,9 @@ html = scraperwiki.scrape("http://uk.soccerway.com/teams/netherlands/fortuna-sit
 root = lxml.html.fromstring(html) #with root you are creating an object which you can then use to operate. You just just leave this line.
 tds = root.cssselect('td') #this what you are looking for. 'td' in this case is the correct html tag surrounding the information you want 
 #to grab. This will change though - you need to check the html code of the original source. 
-print tds
+for td in tds:
+  print lxml.html.tostring(td)
+  print td.text
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
