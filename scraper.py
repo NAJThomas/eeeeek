@@ -10,10 +10,12 @@ html = scraperwiki.scrape("http://uk.soccerway.com/teams/netherlands/fortuna-sit
 root = lxml.html.fromstring(html) #with root you are creating an object which you can then use to operate. You just just leave this line.
 tds = root.cssselect('td') #this what you are looking for. 'td' in this case is the correct html tag surrounding the information you want 
 #to grab. This will change though - you need to check the html code of the original source. 
+indexno = 0
 for td in tds:
- record = {"cell" : td.text}
+ indexno = indexno + 1
+ record = {"cell" : td.text, "index" : indexno}
  print record
- scraperwiki.sqlite.save(["cell"], record)
+ scraperwiki.sqlite.save(["index"], record)
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
