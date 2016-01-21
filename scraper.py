@@ -11,8 +11,9 @@ root = lxml.html.fromstring(html) #with root you are creating an object which yo
 tds = root.cssselect('td') #this what you are looking for. 'td' in this case is the correct html tag surrounding the information you want 
 #to grab. This will change though - you need to check the html code of the original source. 
 for td in tds:
-  print lxml.html.tostring(td)
-  print td.text
+ record = {"cell" : td.text}
+ print record
+ scraperwiki.sqlite.save(["cell"], record)
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
